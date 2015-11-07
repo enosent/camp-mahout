@@ -1,0 +1,18 @@
+# intellij
+.idea/
+*.iml
+
+# Mac
+.DS_Store
+
+# Eclipse
+.settings/
+.target/
+.classpath
+
+target/
+build/
+
+.gradle/
+gradle/
+
