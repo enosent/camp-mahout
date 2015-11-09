@@ -1,4 +1,4 @@
-package camp.mahout.recommend;
+package test.mahout.recommend;
 
 import java.io.File;
 import java.util.List;
@@ -28,8 +28,6 @@ public class ItemBasedRecommenderInfo {
 		
 		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(13, 3);
 		
-		recommendations.forEach(item -> {
-			System.out.println(item.getItemID() + " (" + item.getValue() +")");
-		});
+		recommendations.forEach(System.out::println);
 	}
 }
