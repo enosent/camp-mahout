@@ -9,6 +9,8 @@
 .settings/
 .target/
 .classpath
+bin/
+.project
 
 target/
 build/

@@ -26,9 +26,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.slf4j:slf4j-api:1.7.12")
+    //compile("org.slf4j:slf4j-api:1.7.12")
     compile("org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.apache.mahout:mahout-core:0.9");
     testCompile("junit:junit")
 }
 
