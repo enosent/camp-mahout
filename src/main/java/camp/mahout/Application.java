@@ -1,5 +1,8 @@
 package camp.mahout;
 
+import java.util.List;
+import java.util.stream.IntStream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -7,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import camp.mahout.domain.Movie;
 import camp.mahout.service.MovieService;
 
 /**
@@ -24,9 +28,11 @@ public class Application {
     @Bean
     public CommandLineRunner loadData(MovieService movieService) {
     	return (args -> {
-    		movieService.findAll().forEach(movie -> {
-    			logger.info("# {}", movie.getTitle());
-    		});
+    		logger.info("### connection test.");
+
+    		List<Movie> results = movieService.findAll();
+    		
+    		IntStream.range(0, 5).forEach(idx -> { logger.info("# {}", results.get(idx).getTitle()); });
     	});
     }
 }
