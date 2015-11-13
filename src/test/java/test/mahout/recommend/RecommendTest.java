@@ -34,5 +34,7 @@ public class RecommendTest {
 	public void userBasedTest() throws Exception {
 		List<RecommendedItem> recommend = userBasedRecommendService.recommend();
 		recommend.forEach(info -> log.info("# {}", info) );
+		
+		recommend.forEach(System.out::println);
 	}
 }
