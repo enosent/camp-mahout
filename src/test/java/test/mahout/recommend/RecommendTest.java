@@ -10,6 +10,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import camp.mahout.Application;
+import camp.mahout.domain.Movie;
 import camp.mahout.service.recommend.ItemBasedRecommendService;
 import camp.mahout.service.recommend.UserBasedRecommendService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class RecommendTest {
 	
 	@Test
 	public void itemBasedTest() throws Exception {
-		List<RecommendedItem> recommend = itemBasedRecommendService.recommend();
+		List<Movie> recommend = itemBasedRecommendService.recommend();
 		recommend.forEach(info -> log.info("# {} ",info) );
 	}
 
