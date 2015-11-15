@@ -30,11 +30,9 @@ public class RecommendTest {
 	
 	@Autowired private UserBasedRecommendService userBasedRecommendService;
 	
-	@Test
+	//@Test
 	public void userBasedTest() throws Exception {
 		List<RecommendedItem> recommend = userBasedRecommendService.recommend();
 		recommend.forEach(info -> log.info("# {}", info) );
-		
-		recommend.forEach(System.out::println);
 	}
 }
