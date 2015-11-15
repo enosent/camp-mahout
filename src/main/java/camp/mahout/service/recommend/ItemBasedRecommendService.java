@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 import camp.mahout.domain.Movie;
 import camp.mahout.repository.MovieRepository;
 import camp.mahout.util.Const;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class ItemBasedRecommendService {
 	
@@ -33,9 +35,11 @@ public class ItemBasedRecommendService {
 
 		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(13, 3);
 		
+		log.info("item recommend size - {}", recommendations.size());
+		
 		List<Movie> results = recommendations.stream().map(info -> {
-			return repository.findOne(info.getItemID());
-		}).collect(Collectors.toList());
+									return repository.findOne(info.getItemID());
+								}).collect(Collectors.toList());
 
 		return results;
 	}
