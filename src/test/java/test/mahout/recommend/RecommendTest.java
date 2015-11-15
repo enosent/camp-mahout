@@ -23,7 +23,7 @@ public class RecommendTest {
 	
 	@Test
 	public void itemBasedTest() throws Exception {
-		List<RecommendedItem> recommend = itemBasedRecommendService.recommend();
+		List<String> recommend = itemBasedRecommendService.recommend("아디다스키즈");
 		recommend.forEach(info -> log.info("# {} ",info) );
 	}
 
