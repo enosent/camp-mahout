@@ -18,4 +18,8 @@ public class MovieService {
 		return movieRepository.findAll();
 	}
 	
+	public Movie findOne(Long id) {
+		return movieRepository.findOne(id);
+	}
+	
 }

@@ -61,7 +61,7 @@ public class IDGenerator {
 				migrator.storeMapping(id, stringID);
 			}
 		} catch (Exception e) {
-			logger.error("converstion exception => {}", e.getMessage());
+			logger.error("conversion exception => {}", e.getMessage());
 		}
 
 		return id;

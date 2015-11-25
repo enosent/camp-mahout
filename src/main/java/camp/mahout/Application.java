@@ -32,7 +32,7 @@ public class Application {
 
     		List<Movie> results = movieService.findAll();
     		
-    		IntStream.range(0, 5).forEach(idx -> { logger.info("# {}", results.get(idx).getTitle()); });
+    		IntStream.range(0, 1).forEach(idx -> { logger.info("# {}", results.get(idx).getTitle()); });
     	});
     }
 }

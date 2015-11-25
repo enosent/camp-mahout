@@ -27,12 +27,13 @@ public class ItemBasedRecommendService {
 		DataModel model = new StringFileDataModel(new File(Const.getUserKeywordFile()));
 		IDMap idMap = new IDMap(((StringFileDataModel)model).getIndexedMapInstansce()); // 파일에서 읽어온 데이터 변환 저장정보
 
-		long userID = toLongID(keyword);
+		long itemID = toLongID(keyword);
+		log.info("# {} -> {}", keyword, itemID);
 
 		ItemSimilarity similarity = new LogLikelihoodSimilarity(model);
 		ItemBasedRecommender itemBasedRecommender = new GenericBooleanPrefItemBasedRecommender(model, similarity);
 
-		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(userID, 3);
+		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(itemID, 3);
 		
 		log.info("item recommend size - {}", recommendations.size());
 		
