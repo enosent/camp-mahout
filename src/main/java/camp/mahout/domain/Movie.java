@@ -27,5 +27,10 @@ public class Movie implements Serializable {
 	
 	@Getter @Setter
 	private String title;
+
+	@Override
+	public String toString() {
+		return "Movie [title=" + title + "]";
+	}
 	
 }
