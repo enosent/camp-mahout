@@ -26,21 +26,38 @@ public class ItemBasedRecommendService {
 	@Autowired
 	private MovieRepository repository;
 
-	public List<Movie> recommend() throws Exception {
+	public List<RecommendedItem> recommendId(long itemID) throws Exception {
 
 		DataModel model = new FileDataModel(new File(Const.getSampleFile()));
 
 		ItemSimilarity similarity = new LogLikelihoodSimilarity(model);
 		ItemBasedRecommender itemBasedRecommender = new GenericBooleanPrefItemBasedRecommender(model, similarity);
 
-		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(13, 3);
+		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(itemID, 3);
+		
+		log.info("item recommend size - {}", recommendations.size());
+
+		return recommendations;
+	}
+	
+	public List<Movie> recommendItem(long itemID) throws Exception {
+		
+		Movie target = repository.findOne(itemID);
+		log.info("# {}", target);
+		
+		DataModel model = new FileDataModel(new File(Const.getSampleFile()));
+		
+		ItemSimilarity similarity = new LogLikelihoodSimilarity(model);
+		ItemBasedRecommender itemBasedRecommender = new GenericBooleanPrefItemBasedRecommender(model, similarity);
+		
+		List<RecommendedItem> recommendations = itemBasedRecommender.mostSimilarItems(itemID, 3);
 		
 		log.info("item recommend size - {}", recommendations.size());
 		
 		List<Movie> results = recommendations.stream().map(info -> {
-									return repository.findOne(info.getItemID());
-								}).collect(Collectors.toList());
-
+			return repository.findOne(info.getItemID());
+		}).collect(Collectors.toList());
+		
 		return results;
 	}
 }
